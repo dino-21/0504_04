@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<div v-for="udata in userData">
+no : {{ udata.no }} title: {{ udata.title }}  content: {{ udata.content }}  view: {{ udata.view }}
+</div>
+</div>    
+<script>
+var dataURL = 'https://dino-21.github.io/0504_04/board.json';
+var App = new Vue({
+  el: '#app',
+  data: {
+    userData: []
+  },
+  mounted() {
+    var self = this;
+    $.getJSON(dataURL, function(data) {
+      self.userData = data.board;
+    });
+  }
+})       
+</script>  
+         
+</body>
+</html>      
